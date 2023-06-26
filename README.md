@@ -1,5 +1,7 @@
 ## STUDYNG PROJECT
 
+I started this project thinking about developing an application where I can apply and evolve my knowledge about Clean Architecture, following the principles of SOLID in a coherent way. In addition to also applying DDD (Domain Driven Design) and unit, integration and end to end tests. Always the character of study.
+
 ## MemoMaster
 MemoMaster is an online platform designed for storing and organizing non-sensitive information. It serves as a centralized repository for various types of content, including links, images, audios, and more. The app allows users to group their information by category and provides convenient filtering options for easy retrieval.
 
