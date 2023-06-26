@@ -1,4 +1,4 @@
-## THIS IS A STUDYNG PROJECT
+## STUDYNG PROJECT
 
 ## MemoMaster
 MemoMaster is an online platform designed for storing and organizing non-sensitive information. It serves as a centralized repository for various types of content, including links, images, audios, and more. The app allows users to group their information by category and provides convenient filtering options for easy retrieval.
