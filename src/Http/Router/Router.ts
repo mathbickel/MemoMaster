@@ -6,7 +6,7 @@ export class Router {
     async init(): Promise<void> 
     {
         this.HttpClient.on('get', '/',async (params:string, body: unknown) => {
-            return "TESTE"
+            return ""
         })
     }
 }
