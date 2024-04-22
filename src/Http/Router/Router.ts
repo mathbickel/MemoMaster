@@ -1,4 +1,4 @@
-import { HttpClient } from "../HttpClient/HttpClient";
+import { HttpClient } from "./HttpClient";
 
 export class Router {
     constructor(protected HttpClient: HttpClient){}

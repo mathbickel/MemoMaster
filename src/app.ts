@@ -1,4 +1,4 @@
-import { ExpressAdapter } from "./Http/Adapter/ExpressAdapter";
+import { ExpressAdapter } from "./Http/Adapters/ExpressAdapter";
 import { Router } from "./Http/Router/Router";
 
 const client = new ExpressAdapter()

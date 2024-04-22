@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { HttpClient } from "../HttpClient/HttpClient";
+import { HttpClient } from "../Router/HttpClient";
 
 export class ExpressAdapter implements HttpClient {
     app: any
