@@ -2,12 +2,12 @@ import postgres from "postgres";
 
 export class DatabaseConnection {
     static getConnection() {
-        return postgres('', {
-            host: process.env.HOST,
+        return postgres({
+            host: '127.0.0.1',
             port: 3306,
-            database: process.env.DATABASE,
-            username: process.env.USERNAME,
-            password: process.env.PASSWORD
+            database: 'memomaster',
+            username: 'root',
+            password: ''
         })
     }
 }

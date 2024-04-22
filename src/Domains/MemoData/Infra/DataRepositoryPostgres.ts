@@ -1,17 +1,15 @@
+import postgres from "postgres";
 import { inject, injectable } from "tsyringe";
 import { DbCommand } from "../../../common/database/DbCommand";
-import { DbConnection } from "../../../common/database/DbConnection";
 import { DataRepository } from "../Domain/DataRepository";
 import { IData } from "../Domain/IData";
 import { STORE } from "./sql/store";
 
 @injectable()
 export class DataRepositoryPostgres implements DataRepository {
-    constructor(@inject('DbConnection') private conn: DbConnection){}
+    constructor(@inject('DbConnection') private conn: postgres.Sql){}
 
     async store(data: IData[]): Promise<void> {
-        await this.conn.open()
-        const command = this.conn.command()
         try {
             this.getStored(data, command)    
         } finally {

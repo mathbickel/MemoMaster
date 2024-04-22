@@ -1,9 +1,9 @@
 import { IData } from "./IData";
 
 export interface DataService {
-    store(data: IData): IData
-    getAll(): IData[]
-    getById(id: number): IData
-    update(id: number): IData
-    remove(id: number): IData
+    store(data: IData[]): Promise<IData[]>
+    getAll(): Promise<IData[]>
+    getById(id: number): Promise<IData>
+    update(id: number): Promise<IData>
+    remove(id: number): Promise<IData>
 }
