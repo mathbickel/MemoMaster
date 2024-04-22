@@ -4,7 +4,7 @@ export interface IData {
     description?: string
     category: any // vai ter category
     tags?: string
-    content: []
+    content: string[] 
     author: string
     source?: string
     relatedlinks?: string
