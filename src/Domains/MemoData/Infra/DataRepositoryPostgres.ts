@@ -11,9 +11,9 @@ export class DataRepositoryPostgres implements DataRepository {
 
     async store(data: IData[]): Promise<void> {
         try {
-            this.getStored(data, command)    
+            
         } finally {
-            await this.conn.close()
+            this.conn.CLOSE
         }    
     }
 
