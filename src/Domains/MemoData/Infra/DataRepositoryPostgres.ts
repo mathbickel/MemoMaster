@@ -4,7 +4,7 @@ import { IData } from "../Domain/IData";
 
 @injectable()
 export class DataRepositoryPostgres implements DataRepository {
-    constructor(@inject('DbConnection') private conn){}
+    constructor(@inject('DbConnection') private conn: ){}
 
     async store(data: IData[]): Promise<void> {
         
