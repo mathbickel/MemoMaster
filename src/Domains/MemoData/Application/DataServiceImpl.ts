@@ -7,7 +7,7 @@ export class DataServiceImpl implements DataService {
     constructor(@inject('DataRepositoryPostgres') private dataRepository: DataRepository) {}
     
     async store(data: IData[]): Promise<IData[]> {
-        await this.dataRepository.store(data)
+        const stored = await this.dataRepository.store(data)
         return data
     }
 

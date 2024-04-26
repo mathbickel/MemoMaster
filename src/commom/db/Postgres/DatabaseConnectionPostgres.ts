@@ -1,6 +1,8 @@
 
 import { Sequelize } from 'sequelize';
+import { IData } from '../../../Domains/MemoData/Domain/IData';
 import { DbConnection } from '../DbConnection';
+import { queryResult } from '../types';
 
 export interface DbConnectionConfig {
     host: string
@@ -25,20 +27,19 @@ export class DatabaseConnectionPostgres implements DbConnection {
         )
     }
 
-    async open(): Promise<DbConnection> {
+    async open(): Promise<void> {
         try {
             await this.sequelize.authenticate()
-            return this
         } catch (e) {
             console.log(e)
             throw new Error('Sequelize authentication error')
         }
     }
 
-    async command(): DbCommand<any, any> {
+    async command(query: string, data?: IData[]): Promise<queryResult> {
         try {
             await this.open()
-            await this.sequelize.query('SELECT * FROM RECORDS')
+            return await this.sequelize.query('SELECT * FROM RECORDS')
         } finally {
             await this.close()
         }

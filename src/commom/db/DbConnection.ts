@@ -1,7 +1,8 @@
-import { DbCommand } from "./DbCommand"
+import { IData } from "../../Domains/MemoData/Domain/IData"
+import { queryResult } from "./types"
 
 export interface DbConnection {
-    command(): DbCommand<any>
-    open():Promise<DbConnection>
+    command<T>(query: string, data?: IData[]): Promise<queryResult>
+    open():Promise<void>
     close():Promise<void>
 }

@@ -1,13 +1,16 @@
 import { inject, injectable } from "tsyringe";
+import { DbConnection } from "../../../commom/db/DbConnection";
 import { DataRepository } from "../Domain/DataRepository";
 import { IData } from "../Domain/IData";
+import { DatabaseToMemoDataAdapter } from "./adapters/DatabaseToMemoDataAdapter";
 
 @injectable()
 export class DataRepositoryPostgres implements DataRepository {
-    constructor(@inject('DbConnection') private conn: ){}
+    constructor(@inject('DbConnection') private conn: DbConnection){}
 
-    async store(data: IData[]): Promise<void> {
-        
+    async store(data: IData[]): Promise<IData[]> {
+        const result = await this.conn.command("", data)
+        return DatabaseToMemoDataAdapter.toMemoData(result)
     }
 
     async getAll(): Promise<IData[]> {
@@ -25,4 +28,4 @@ export class DataRepositoryPostgres implements DataRepository {
     async remove(id: number): Promise<IData> {
         throw new Error("Method not implemented.");
     }
-}
+}   
