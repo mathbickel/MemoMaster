@@ -7,7 +7,7 @@ export class Router {
     async init(): Promise<void> 
     {
         this.HttpClient.on('get', '/',async (params:string, body: unknown) => {
-            return new EntryController().index(body)
+            return new EntryController().index(body, params)
         })
     }
 }

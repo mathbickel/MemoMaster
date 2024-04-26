@@ -9,7 +9,7 @@ import { BaseController } from "./BaseController";
 export class EntryController implements BaseController {
     constructor(){}
     
-    async index<T>(data: T[], params: string): Promise<HttpResponse<IData[]>> {
+    async index<T>(data: T, params: string): Promise<HttpResponse<IData[]>> {
         if(!data) throw new Error('missing data')
         const adapted = new DataAdapter().adaptRequesToData(data);
         const repository = await RepostoryFactory.getRepository()
