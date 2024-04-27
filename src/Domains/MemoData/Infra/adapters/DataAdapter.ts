@@ -1,4 +1,4 @@
-import { IData } from "../MemoData/Domain/IData";
+import { IData } from "../../Domain/IData";
 import { IDataAdapter } from "./IDataAdapter";
 
 export class DataAdapter implements IDataAdapter {
