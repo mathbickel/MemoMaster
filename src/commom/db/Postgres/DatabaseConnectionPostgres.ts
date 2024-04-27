@@ -39,7 +39,7 @@ export class DatabaseConnectionPostgres implements DbConnection {
     async command(query: string, data?: IData[]): Promise<queryResult> {
         try {
             await this.open()
-            return await this.sequelize.query('SELECT * FROM RECORDS')
+            return await this.sequelize.query({query: 'INSERT INTO records VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', values: data})
         } finally {
             await this.close()
         }

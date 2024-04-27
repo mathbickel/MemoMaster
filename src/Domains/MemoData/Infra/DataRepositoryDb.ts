@@ -1,12 +1,14 @@
 import { inject, injectable } from "tsyringe";
+
 import { DbConnection } from "../../../commom/db/DbConnection";
+import { DatabaseConnectionEnum } from "../../../commom/db/bootstrap/DatabaseConnectionEnum";
 import { DataRepository } from "../Domain/DataRepository";
 import { IData } from "../Domain/IData";
 import { DatabaseToMemoDataAdapter } from "./adapters/DatabaseToMemoDataAdapter";
 
 @injectable()
-export class DataRepositoryPostgres implements DataRepository {
-    constructor(@inject('DatabaseConnectionPostgres') private conn: DbConnection){}
+export class DataRepositoryDb implements DataRepository {
+    constructor(@inject(DatabaseConnectionEnum.DATABASE_CONNECTION) private conn: DbConnection){}
 
     async store(data: IData[]): Promise<IData[]> {
         const result = await this.conn.command("", data)

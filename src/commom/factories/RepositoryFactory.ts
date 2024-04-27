@@ -1,4 +1,4 @@
-import { DataRepositoryPostgres } from "../../Domains/MemoData/Infra/DataRepositoryPostgres"
+import { DataRepositoryDb } from "../../Domains/MemoData/Infra/DataRepositoryDb"
 import { DatabaseConnectionPostgres } from "../db/Postgres/DatabaseConnectionPostgres"
 
 export class RepostoryFactory {
@@ -8,6 +8,6 @@ export class RepostoryFactory {
 
     static async getRepository() {
         const conn = await this.connection()
-        return new DataRepositoryPostgres(conn)
+        return new DataRepositoryDb(conn)
     }
 }
