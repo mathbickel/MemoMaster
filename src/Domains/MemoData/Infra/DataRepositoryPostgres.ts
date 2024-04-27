@@ -6,7 +6,7 @@ import { DatabaseToMemoDataAdapter } from "./adapters/DatabaseToMemoDataAdapter"
 
 @injectable()
 export class DataRepositoryPostgres implements DataRepository {
-    constructor(@inject('DbConnection') private conn: DbConnection){}
+    constructor(@inject('DatabaseConnectionPostgres') private conn: DbConnection){}
 
     async store(data: IData[]): Promise<IData[]> {
         const result = await this.conn.command("", data)
