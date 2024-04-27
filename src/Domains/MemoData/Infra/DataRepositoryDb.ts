@@ -11,8 +11,13 @@ export class DataRepositoryDb implements DataRepository {
     constructor(@inject(DatabaseConnectionEnum.DATABASE_CONNECTION) private conn: DbConnection){}
 
     async store(data: IData[]): Promise<IData[]> {
-        const result = await this.conn.command("", data)
-        return DatabaseToMemoDataAdapter.toMemoData(result)
+        try {
+            const result = await this.conn.command("insert", data)
+            console.log(result, 'result')
+            return DatabaseToMemoDataAdapter.toMemoData(result)
+        } catch (e) {
+            console.log(e, 'error')
+        }
     }
 
     async getAll(): Promise<IData[]> {

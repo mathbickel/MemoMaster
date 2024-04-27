@@ -16,20 +16,20 @@ export class DatabaseConnectionPostgres implements DbConnection {
 
     constructor(){
         this.sequelize = new Sequelize(
-            process.env.DATABASE,
-            process.env.USERNAME,
-            process.env.PASSWORD,
+            'memomaster',
+            'root',
+            'root',
             {
-                host: process.env.HOST,
-                port:  Number(process.env.PORT),
+                host: '127.0.0.1' ,
+                port:  5432,
                 dialect: "postgres"
             }
         )
     }
 
-    async open(): Promise<void> {
+    async open(): Promise<DbConnection> {
         try {
-            await this.sequelize.authenticate()
+            return await this.sequelize.authenticate() as unknown as DbConnection
         } catch (e) {
             console.log(e)
             throw new Error('Sequelize authentication error')
@@ -40,7 +40,10 @@ export class DatabaseConnectionPostgres implements DbConnection {
         try {
             await this.open()
             return await this.sequelize.query({query: 'INSERT INTO records VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', values: data})
-        } finally {
+        } catch (e) {
+            throw new Error("error" + e)
+        }
+        finally {
             await this.close()
         }
     }

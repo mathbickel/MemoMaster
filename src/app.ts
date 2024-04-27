@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { ExpressAdapter } from "./Http/Adapters/ExpressAdapter";
 import { Router } from "./Http/Router/Router";
 import { bootstrapStart } from "./commom/bootstrap/bootstrapStart";

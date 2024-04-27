@@ -3,6 +3,6 @@ import { queryResult } from "./types"
 
 export interface DbConnection {
     command(query: string, data?: IData[]): Promise<queryResult>
-    open():Promise<void>
+    open():Promise<DbConnection>
     close():Promise<void>
 }
