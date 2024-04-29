@@ -4,7 +4,6 @@ import { DbConnection } from "../../../commom/db/DbConnection";
 import { DatabaseConnectionEnum } from "../../../commom/db/bootstrap/DatabaseConnectionEnum";
 import { DataRepository } from "../Domain/DataRepository";
 import { IData } from "../Domain/IData";
-import { DatabaseToMemoDataAdapter } from "./adapters/DatabaseToMemoDataAdapter";
 
 @injectable()
 export class DataRepositoryDb implements DataRepository {
@@ -12,9 +11,9 @@ export class DataRepositoryDb implements DataRepository {
 
     async store(data: IData[]): Promise<IData[]> {
         try {
-            const result = await this.conn.command("insert", data)
-            console.log(result, 'result')
-            return DatabaseToMemoDataAdapter.toMemoData(result)
+            return await this.conn.command("insert", data)
+            // console.log(result[0], 'result')
+            // return DatabaseToMemoDataAdapter.toMemoData(result[0])
         } catch (e) {
             console.log(e, 'error')
         }

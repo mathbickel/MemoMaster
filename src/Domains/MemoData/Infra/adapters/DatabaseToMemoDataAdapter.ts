@@ -1,7 +1,7 @@
 import { IData } from "../../Domain/IData";
 
 export class DatabaseToMemoDataAdapter {
-    static async toMemoData(data: unknown): Promise<IData[]> {
+    static async toMemoData(data: unknown[]): Promise<IData[]> {
         return [{
                 id: data.hasOwnProperty('id') ? (data as any).id : 0,
                 title: data.hasOwnProperty('title') ? (data as any).title : '',
