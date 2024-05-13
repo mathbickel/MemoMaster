@@ -2,6 +2,7 @@
   "name": "memomaster",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs" ,
   "scripts": {
     "start": "ts-node-dev --transpile-only src/app.ts",
     "build": "tsc --build",

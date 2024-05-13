@@ -11,9 +11,8 @@ export class DataRepositoryDb implements DataRepository {
 
     async store(data: IData[]): Promise<IData[]> {
         try {
-            return await this.conn.command("insert", data)
-            // console.log(result[0], 'result')
-            // return DatabaseToMemoDataAdapter.toMemoData(result[0])
+            return await this.conn.command('select', data)
+            // return DatabaseToMemoDataAdapter.toMemoData()
         } catch (e) {
             console.log(e, 'error')
         }
