@@ -1,8 +1,8 @@
 
 import { Sequelize } from 'sequelize';
+import { injectable } from 'tsyringe';
 import { IData } from '../../../Domains/MemoData/Domain/IData';
 import { DbConnection } from '../DbConnection';
-import { queryResult } from '../types';
 
 export interface DbConnectionConfig {
     host: string
@@ -10,7 +10,7 @@ export interface DbConnectionConfig {
     password: string
     database: string
 }
-
+@injectable()
 export class DatabaseConnectionPostgres implements DbConnection {
     private sequelize: Sequelize
 
@@ -36,10 +36,13 @@ export class DatabaseConnectionPostgres implements DbConnection {
         }
     }
 
-    async command(query: string, data?: IData[]): Promise<queryResult> {
+    async command(query: string, data?: IData[]): Promise<IData[]> {
         try {
             await this.open()
-            return await this.sequelize.query({query: 'INSERT INTO records VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', values: data})
+            const result = await this.sequelize.query('SELECT * FROM RECORDS')
+            // const result = await this.sequelize.query({query: 'INSERT INTO records VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', values: data})
+            console.log(result, 'RES')
+            return data ?? null
         } catch (e) {
             throw new Error("error" + e)
         }

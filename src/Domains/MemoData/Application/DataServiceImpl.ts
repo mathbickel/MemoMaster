@@ -1,10 +1,11 @@
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 import { DataRepository } from "../Domain/DataRepository";
 import { DataRepositoryEnum } from "../Domain/DataRepositoryEnum";
 import { DataService } from "../Domain/DataService";
 import { IData } from "../Domain/IData";
 
+@injectable()
 export class DataServiceImpl implements DataService {
     constructor(@inject(DataRepositoryEnum.DATA_REPOSITORY) private dataRepository: DataRepository) {}
     
